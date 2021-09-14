@@ -37,14 +37,14 @@ def computer_turn(stand_probability):
         level = "L"
 
     risk = risk_selection(level)
-    print("This move was {percent} risky!\n".format(percent=risk / 10 * 100))
+    move_risk(risk / 10 * 100)
 
     return risk
 
 
 def player_turn():
     risk = risk_selection(input("Your turn. Enter L, M, or H: "))
-    print("This move was {percent} risky!\n".format(percent=risk / 10 * 100))
+    move_risk(risk / 10 * 100)
     return risk
 
 
@@ -65,6 +65,10 @@ def risk_selection(level):
 
 def randomize_risk(l, h):
     return np.random.randint(low=l, high=h + 1)
+
+
+def move_risk(percent):
+    print("This move was {:n}{} risky!\n".format(percent, "%"))
 
 
 def round_info(round, stand_probability):
